@@ -13,5 +13,11 @@ export const NavBar = () => {
         <li className="navbar-item">
             <Link to='/resources'>Resources</Link>
         </li>
+        <li className="navbar-item">
+            <Link to='/add'>D-Add</Link>
+        </li>
+        <li className="navbar-item">
+            <Link to='/login'>Logout</Link>
+        </li>
     </ul>
 }

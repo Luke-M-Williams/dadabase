@@ -19,7 +19,7 @@ useEffect(() => {
 )
 
 return <section className="quotes">
-    <header className="quotes-header">{quotes.quote} -{quotes.author}</header>
+    <header className="quotes-header">{quotes.quote} {quotes.author} {quotes.mood}</header>
     <div>
         <span className="quotes-info">Added by{quotes.user?.name}:</span>
         
