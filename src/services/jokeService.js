@@ -27,12 +27,12 @@ export const deleteJoke = (id) => {
     }).then((res) => res.json());
 };
 
-export const updateFavoriteJoke = (userId, jokeId) => {
+export const updateFavoriteJoke = (userId, jokeId, addFavorite = true) => {
     return fetch(`http://localhost:8088/users/${userId}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ favoriteJokeId: jokeId }),
+      body: JSON.stringify({ favoriteJokeId: addFavorite ? jokeId : null }),
     }).then((res) => res.json());
-  };
+};

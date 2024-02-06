@@ -1,8 +1,18 @@
 import { useEffect, useState } from "react";
-import { getAllJokes, deleteJoke } from "../services/jokeService";
+import { getAllJokes, deleteJoke, updateFavoriteJoke } from "../services/jokeService";
 
 export const JokeList = () => {
     const [jokes, setJokes] = useState([]);
+    const [currentUserId, setCurrentUserId] = useState(null);
+    const [favorites, setFavorites] = useState(new Set());
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem("dadabase_user");
+        if (storedUser) {
+          const parsedUser = JSON.parse(storedUser);
+          setCurrentUserId(parsedUser.id);
+        }
+      }, []);
 
     useEffect(() => {
         getAllJokes().then((jokesArray) => {
@@ -16,6 +26,19 @@ export const JokeList = () => {
         setJokes(jokes.filter(joke => joke.id !== id));
     };
 
+    const handleFavorite = async (userId, jokeId) => {
+        const isFavorite = favorites.has(jokeId);
+            if (isFavorite) {
+            favorites.delete(jokeId);
+        } else {
+            favorites.add(jokeId);
+        }
+        
+        await updateFavoriteJoke(userId, jokeId, !isFavorite);
+        setFavorites(new Set(favorites));
+    };
+    
+
     return (
         <div className="jokes">
             {jokes.map(jokeObj => {
@@ -23,6 +46,9 @@ export const JokeList = () => {
                     <div key={jokeObj.id}>
                         <h2>{jokeObj.joke}</h2>
                         <p>Added by: {jokeObj.user?.name}</p>
+                        <button onClick={() => handleFavorite(currentUserId, jokeObj.id)}>
+                            {favorites.has(jokeObj.id) ? 'Favorited' : 'Favorite'}
+                        </button>
                         <button onClick={() => handleDelete(jokeObj.id)}>Delete</button>
                     </div>
                 );

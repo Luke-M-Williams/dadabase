@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { deleteQuote, getAllQuotes } from "../services/quoteServices"
+import { deleteQuote, getAllQuotes, updateFavoriteQuote } from "../services/quoteServices"
 
 export const QuoteList = () => {
     const [quotes, setQuotes] = useState([])
@@ -8,6 +8,16 @@ export const QuoteList = () => {
     const [showStressedOnly, setShowStressedOnly] = useState(false)
     const [showAfraidOnly, setShowAfraidOnly] = useState(false)
     const [showAngryOnly, setShowAngryOnly] = useState(false)
+    const [currentUserId, setCurrentUserId] = useState(null);
+    const [favorites, setFavorites] = useState(new Set());
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem("dadabase_user");
+        if (storedUser) {
+          const parsedUser = JSON.parse(storedUser);
+          setCurrentUserId(parsedUser.id);
+        }
+      }, []);
 
     useEffect(() => {
         getAllQuotes().then((quotesArray) => {
@@ -27,6 +37,20 @@ export const QuoteList = () => {
         setShowAfraidOnly(false)
         setShowAngryOnly(false)
     }
+
+    const handleFavorite = async (userId, quoteId) => {
+        const isFavorite = favorites.has(quoteId);
+            if (isFavorite) {
+            favorites.delete(quoteId);
+        } else {
+            favorites.add(quoteId);
+        }
+        
+        await updateFavoriteQuote(userId, quoteId, !isFavorite);
+        setFavorites(new Set(favorites));
+    };
+    
+
 
     return (
         <div>
@@ -83,6 +107,9 @@ export const QuoteList = () => {
                             <h2>{quoteObj.quote}</h2>
                             <h3>-{quoteObj.author}</h3>
                             <p>Added by: {quoteObj.user?.name}</p>
+                            <button onClick={() => handleFavorite(currentUserId, quoteObj.id)}>
+                            {favorites.has(quoteObj.id) ? 'Favorited' : 'Favorite'}
+                            </button>
                             <button onClick={() => handleDelete(quoteObj.id)}>Delete</button>
                         </div>
                     )
