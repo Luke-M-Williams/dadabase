@@ -8,6 +8,7 @@ import { QuoteList } from "../quotes/QuoteList"
 import { QuoteDetails } from "../quotes/QuoteDetails"
 import { AddJokeForm } from "../jokes/AddJoke"
 import { AddQuoteForm } from "../quotes/AddQuote"
+import { User } from "../users/Users"
 
 
 export const ApplicationViews = () => {
@@ -41,13 +42,16 @@ export const ApplicationViews = () => {
                   <Route path=':quoteId' element={<QuoteDetails />} />
                 </Route>
                 <Route path="add/*">
-          <Route index element={
-            <>
-              <AddJokeForm />
-              <AddQuoteForm />
-            </>
-          } />
-        </Route>
+                <Route index element={
+                    <>
+                    <AddJokeForm />
+                    <AddQuoteForm />
+                    </>
+                } />
+                </Route>
+                <Route path='user'>
+                    <Route index element={<User />} />
+                </Route>
 
                 
       </Route>

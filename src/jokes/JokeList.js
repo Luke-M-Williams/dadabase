@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllJokes, deleteJoke, updateFavoriteJoke } from "../services/jokeService";
+import "./Jokes.css"
 
 export const JokeList = () => {
     const [jokes, setJokes] = useState([]);
@@ -41,6 +42,7 @@ export const JokeList = () => {
 
     return (
         <div className="jokes">
+            <div className="jokes-header"><h1>DAD JOKES</h1></div>
             {jokes.map(jokeObj => {
                 return (
                     <div key={jokeObj.id}>

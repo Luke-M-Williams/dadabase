@@ -30,13 +30,37 @@ export const QuoteList = () => {
         setQuotes(quotes.filter(quote => quote.id !== id));
     };
 
-    const showAll = () => {
-        setShowHappyOnly(false)
-        setShowSadOnly(false)
-        setShowStressedOnly(false)
-        setShowAfraidOnly(false)
-        setShowAngryOnly(false)
-    }
+    const showAllAndFilterByMood = (mood) => {
+        // Reset all filter states
+        setShowHappyOnly(false);
+        setShowSadOnly(false);
+        setShowStressedOnly(false);
+        setShowAfraidOnly(false);
+        setShowAngryOnly(false);
+    
+        // Apply the desired mood filter
+        switch (mood) {
+            case 'happy':
+                setShowHappyOnly(true);
+                break;
+            case 'sad':
+                setShowSadOnly(true);
+                break;
+            case 'stressed':
+                setShowStressedOnly(true);
+                break;
+            case 'afraid':
+                setShowAfraidOnly(true);
+                break;
+            case 'angry':
+                setShowAngryOnly(true);
+                break;
+            default:
+                // No specific mood filter needed, just show all
+                break;
+        }
+    };
+    
 
     const handleFavorite = async (userId, quoteId) => {
         const isFavorite = favorites.has(quoteId);
@@ -55,42 +79,42 @@ export const QuoteList = () => {
     return (
         <div>
             <div className="filter-bar">
-                <button 
-                    className="filter-btn btn primary" 
-                    onClick={() => setShowHappyOnly(true)}
-                >
-                    Happy
-                </button>
-                <button 
-                    className="filter-btn btn warning" 
-                    onClick={() => setShowSadOnly(true)}
-                >
-                    Sad
-                </button>
-                <button 
-                    className="filter-btn btn danger" 
-                    onClick={() => setShowStressedOnly(true)}
-                >
-                    Stressed
-                </button>
-                <button 
-                    className="filter-btn btn secondary" 
-                    onClick={() => setShowAfraidOnly(true)}
-                >
-                    Afraid
-                </button>
-                <button 
-                    className="filter-btn btn success" 
-                    onClick={() => setShowAngryOnly(true)}
-                >
-                    Angry
-                </button>
-                <button 
-                    className="filter-btn btn info" 
-                    onClick={showAll}
-                >
-                    Show All
-                </button>
+            <button  
+            className="filter-btn btn primary"  
+            onClick={() => showAllAndFilterByMood('happy')}
+            >
+            Happy
+        </button>
+        <button  
+        className="filter-btn btn warning"  
+        onClick={() => showAllAndFilterByMood('sad')}
+        >
+        Sad
+    </button>
+    <button  
+    className="filter-btn btn danger"  
+    onClick={() => showAllAndFilterByMood('stressed')}
+>
+    Stressed
+    </button>
+    <button  
+        className="filter-btn btn secondary"  
+        onClick={() => showAllAndFilterByMood('afraid')}
+    >
+        Afraid
+    </button>
+    <button  
+        className="filter-btn btn success"  
+        onClick={() => showAllAndFilterByMood('angry')}
+    >
+        Angry
+    </button>
+    <button  
+        className="filter-btn btn info"  
+        onClick={() => showAllAndFilterByMood()}
+    >
+        Show All
+    </button>
             </div>
             <div className="quotes">
                 {quotes.map(quoteObj => {

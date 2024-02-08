@@ -17,6 +17,9 @@ export const NavBar = () => {
             <Link to='/add'>D-Add</Link>
         </li>
         <li className="navbar-item">
+            <Link to='/user'>Dadfile</Link>
+        </li>
+        <li className="navbar-item">
             <Link to='/login'>Logout</Link>
         </li>
     </ul>

@@ -1,0 +1,9 @@
+.jokes-header {
+    display: flex;
+    justify-content: center; 
+}
+
+.jokes {
+    margin: 1rem;
+    font: bangers
+}
