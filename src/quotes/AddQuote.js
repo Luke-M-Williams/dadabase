@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { createQuote } from '../services/quoteServices';
+import './Quotes.css'
 
 export const AddQuoteForm = () => {
   const [quoteText, setQuoteText] = useState('');
@@ -48,40 +49,42 @@ export const AddQuoteForm = () => {
 };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="quote-text">Quote Text:</label>
-      <input
-        id="quote-text"
-        type="text"
-        placeholder='Quote'
-        value={quoteText}
-        onChange={(event) => setQuoteText(event.target.value)}
-      />
-      <br />
-      <label htmlFor="author">Author:</label>
-      <input
-        id="author"
-        type="text"
-        placeholder='Author'
-        value={author}
-        onChange={(event) => setAuthor(event.target.value)}
-      />
-      <br />
-      <label htmlFor="mood">Mood:</label>
-      <select
-        id="mood"
-        value={mood}
-        onChange={(event) => setMood(event.target.value)}
-      >
-        <option value="">Select mood</option>
-        <option value="happy">Happy</option>
-        <option value="sad">Sad</option>
-        <option value="stressed">Stressed</option>
-        <option value="afraid">Afraid</option>
-        <option value="angry">Angry</option>
-      </select>
-      <br />
-      <button type="submit">Add Quote</button>
-    </form>
+   <div className='form-container'>
+  <form onSubmit={handleSubmit}>
+    <label htmlFor="quote-text">Quote Text:</label>
+    <input
+      id="quote-text"
+      type="text"
+      placeholder='Quote'
+      value={quoteText}
+      onChange={(event) => setQuoteText(event.target.value)}
+    />
+    <br />
+    <label htmlFor="author">Author:</label>
+    <input
+      id="author"
+      type="text"
+      placeholder='Author'
+      value={author}
+      onChange={(event) => setAuthor(event.target.value)}
+    />
+    <br />
+    <label htmlFor="mood">Mood:</label>
+    <select
+      id="mood"
+      value={mood}
+      onChange={(event) => setMood(event.target.value)}
+    >
+      <option value="">Select mood</option>
+      <option value="happy">Happy</option>
+      <option value="sad">Sad</option>
+      <option value="stressed">Stressed</option>
+      <option value="afraid">Afraid</option>
+      <option value="angry">Angry</option>
+    </select>
+    <br />
+    <button type="submit">Add Quote</button>
+  </form>
+</div>
   );
 };

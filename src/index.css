@@ -45,7 +45,7 @@ textarea {
 }
 
 body {
-  background-color: #b6efec;
+  background-color: #ebefb6;
   margin: 0;
 }
 
@@ -79,7 +79,7 @@ button {
   border-radius: 2rem;
   color: #b5b800;
   cursor: pointer;
-  background-color: rgb(76, 13, 248);
+  background-color: rgb(21, 13, 248);
   font-size: large;
   margin: 0px 10px;
   }

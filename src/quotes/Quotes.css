@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Tangerine&family=Bangers&family=Quicksand&family=Roboto:wght@100&display=swap");
+
+.quotes-header {
+    display: flex;
+    justify-content: center; 
+}
+
+.quotes-all {
+    margin: 1rem;
+    border: 1px solid var(--outline);
+    border-radius: 0.5rem;
+    padding: 10px;
+    background-color: #000000;
+}
+
+.quote-header {
+    display: flex;
+    justify-content: center; 
+    font-family: 'Tangerine', serif;
+    font-size: 96px;
+    margin-top: 1rem;
+    color: #007bff;
+}
+
+.quotes-list {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border: 1px solid var(--outline);
+    border-radius: 0.5rem;
+    padding: 10px;
+   
+      box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
+      background: #fffef0;
+    filter: url(#wavy2);
+    
+}
+
+.quote {
+    margin: 1rem;
+    font-family: 'Tangerine', serif;
+    font-size: 72px;
+    text-shadow: 4px, 4px, 4px #aaa;
+    font: bold;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.quote-added {
+    font-style: italic;
+    font-family: 'Tangerine';
+    font-size: 24px;
+}
+
+.quote-author {
+    margin-left: 2rem;
+    font-family: 'Tangerine', serif;
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+    }
+
+.filter-bar {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.quote-favorite {
+    display: flex;
+    font-family: 'Tangerine', serif;
+    justify-content: center;
+}
+
+.quote-delete {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-warning:hover {
+    background-color: #e14617;
+  }
+
+.favorite-button {
+    background-color: rgb(255, 0, 132);
+    display: flex;
+    justify-content: center;
+}
+
+.delete-button {
+    background-color: red;
+    display: flex;
+    justify-content: center;
+}
+
+/* Optional hover effect for the delete button */
+.delete-button:hover {
+    background-color: darkred;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+
+}
+
+.filter-btn-happy {
+    background-color: yellow;
+    border: 1px solid var(--outline);
+    border-radius: 0.5rem;
+    padding: 10px;
+    font-weight: bold;
+
+}
+
+.filter-btn-sad {
+    border: 1px solid var(--outline);
+    border-radius: 0.5rem;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.filter-btn-danger {
+    background-color: #e14617;
+    border: 1px solid var(--outline);
+    border-radius: 0.5rem;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.filter-btn-afraid {
+    background-color: #6e6d6d;
+    border: 1px solid var(--outline);
+    border-radius: 0.5rem;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.filter-btn-angry {
+    background-color: firebrick;
+    border: 1px solid var(--outline);
+    border-radius: 0.5rem;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.filter-btn-all {
+    background-color: #0a0a0a;
+    border: 1px solid var(--outline);
+    border-radius: 0.5rem;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 1rem;
+    height: 20vh; 
+    padding: 1rem;
+    font-family: Bangers;
+    font-size: larger;
+  }
+  
+  form {
+    width: 100%;
+    max-width: 800px; /* Changed to 800px to match the width of Quotes form */
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  input,
+  select {
+    width: 90%; /* Changed to 50% to make the inputs twice as wide */
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+  }
+  
+  button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }

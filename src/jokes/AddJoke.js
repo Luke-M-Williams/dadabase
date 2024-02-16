@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { createJoke } from '../services/jokeService';
+import "./Jokes.css"
 
 export const AddJokeForm = () => {
   const [newJokeText, setNewJokeText] = useState('');
@@ -33,15 +34,19 @@ export const AddJokeForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="quote-text">Joke:</label>
-      <input
-        type="text"
-        placeholder="Add your joke here..."
-        value={newJokeText}
-        onChange={(e) => setNewJokeText(e.target.value)}
-      />
-      <button type="submit">Add Joke</button>
-    </form>
-  );
-};
+    <div className='add-joke-form'>
+<form onSubmit={handleSubmit} style={{ textAlign: 'center' }}>
+  <label htmlFor="quote-text">Joke:</label>
+  <input
+    type="text"
+    placeholder="Add your joke here..."
+    value={newJokeText}
+    onChange={(e) => setNewJokeText(e.target.value)}
+    style={{ width: '80%', maxWidth: '500px', padding: '8px' }}
+  />
+  <br />
+  <button type="submit">Add Joke</button>
+</form>
+</div>
+ )
+}

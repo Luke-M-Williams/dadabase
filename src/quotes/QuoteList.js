@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { deleteQuote, getAllQuotes, updateFavoriteQuote } from "../services/quoteServices"
+import "./Quotes.css"
 
 export const QuoteList = () => {
     const [quotes, setQuotes] = useState([])
@@ -77,40 +78,41 @@ export const QuoteList = () => {
 
 
     return (
-        <div>
+        <div className="quotes-all">
+            <div className="quote-header">Dadspiration</div>
             <div className="filter-bar">
             <button  
-            className="filter-btn btn primary"  
+            className="filter-btn-happy"  
             onClick={() => showAllAndFilterByMood('happy')}
             >
             Happy
         </button>
         <button  
-        className="filter-btn btn warning"  
+        className="filter-btn-sad"  
         onClick={() => showAllAndFilterByMood('sad')}
         >
         Sad
     </button>
     <button  
-    className="filter-btn btn danger"  
+    className="filter-btn-danger"  
     onClick={() => showAllAndFilterByMood('stressed')}
 >
     Stressed
     </button>
     <button  
-        className="filter-btn btn secondary"  
+        className="filter-btn-afraid"  
         onClick={() => showAllAndFilterByMood('afraid')}
     >
         Afraid
     </button>
     <button  
-        className="filter-btn btn success"  
+        className="filter-btn-angry"  
         onClick={() => showAllAndFilterByMood('angry')}
     >
         Angry
     </button>
     <button  
-        className="filter-btn btn info"  
+        className="filter-btn-all"  
         onClick={() => showAllAndFilterByMood()}
     >
         Show All
@@ -127,14 +129,16 @@ export const QuoteList = () => {
                     }
 
                     return (
-                        <div key={quoteObj.id}>
-                            <h2>{quoteObj.quote}</h2>
-                            <h3>-{quoteObj.author}</h3>
-                            <p>Added by: {quoteObj.user?.name}</p>
-                            <button onClick={() => handleFavorite(currentUserId, quoteObj.id)}>
+                        <div key={quoteObj.id}><div className="quotes-list">
+                           <div className="quote"><p>{quoteObj.quote}</p> </div>
+                            <div className="quote-author"><p>-{quoteObj.author}</p></div>
+                            <div className="quote-added"><p>Added by: {quoteObj.user?.name}</p></div>
+                            <div class="button-container">
+                            <button className="favorite-button" onClick={() => handleFavorite(currentUserId, quoteObj.id)}>
                             {favorites.has(quoteObj.id) ? 'Favorited' : 'Favorite'}
                             </button>
-                            <button onClick={() => handleDelete(quoteObj.id)}>Delete</button>
+                           <button class="delete-button" onClick={() => handleDelete(quoteObj.id)}>Delete</button></div>
+                            </div>
                         </div>
                     )
                 })}

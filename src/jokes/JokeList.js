@@ -42,16 +42,22 @@ export const JokeList = () => {
 
     return (
         <div className="jokes">
-            <div className="jokes-header"><h1>DAD JOKES</h1></div>
+            <div className="jokes-header">DAD JOKES</div>
             {jokes.map(jokeObj => {
                 return (
-                    <div key={jokeObj.id}>
-                        <h2>{jokeObj.joke}</h2>
-                        <p>Added by: {jokeObj.user?.name}</p>
-                        <button onClick={() => handleFavorite(currentUserId, jokeObj.id)}>
-                            {favorites.has(jokeObj.id) ? 'Favorited' : 'Favorite'}
-                        </button>
-                        <button onClick={() => handleDelete(jokeObj.id)}>Delete</button>
+                    <div key={jokeObj.id} className="joke-section"> 
+                        <div className="jokes-list">
+                            <h2>{jokeObj.joke}</h2> 
+                            <p>Added by: {jokeObj.user?.name}</p>
+                        </div>
+                        <span className="button-container">
+                            <button className="favorite-button" onClick={() => handleFavorite(currentUserId, jokeObj.id)}>
+                                {favorites.has(jokeObj.id) ? 'Favorited' : 'Favorite'}
+                            </button> 
+
+                            <button className="delete-button" onClick={() => handleDelete(jokeObj.id)}>Delete</button>
+                        </span>
+                        
                     </div>
                 );
             })}

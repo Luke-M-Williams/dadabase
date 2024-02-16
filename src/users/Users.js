@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getUserInfo } from '../services/userService';
+import './Users.css'
 
 export const User = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -27,7 +28,7 @@ export const User = () => {
   return (
     <div>
       {currentUser && (
-        <div>
+        <div className='user-profile'>
           <h2>Welcome, {currentUser.name}</h2>
           <p>Email: {currentUser.email}</p>
           {favoriteJoke && (
